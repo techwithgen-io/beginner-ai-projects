@@ -1,124 +1,117 @@
 # Project 02 — Context-Aware AI Study Buddy 🧠📚
 
-A beginner-friendly AI agent that remembers **how you learn**, not just what you say.
+This is **Project 02** in the **Beginner AI Projects** series.
 
-This project builds on Project 01 by introducing **persistent memory**.  
-Instead of treating every session as a fresh chat, the Study Buddy remembers your learning goals, experience level, and preferences to respond like a personalized tutor.
+In this project, we build a **command-line Study Buddy** that **remembers your learning context** (your name, what you’re learning, your level, and preferences) and uses it to respond like a personalized tutor.
 
----
-
-## ✨ What This Project Does
-
-- Remembers your:
-  - Name
-  - Learning goal (ex: Python, AI agents, Java)
-  - Experience level (beginner / intermediate / advanced)
-- Adapts explanations based on your preferences
-- Saves memory locally between runs
-- Provides a friendly CLI study experience
-
-This is **not** just chat history — it’s *learning context*.
+The goal is to teach beginners what “AI memory” actually means — **without a UI** or extra complexity.
 
 ---
 
-## 🧠 How Memory Works
+## 🧠 What You’ll Learn
 
-The agent stores a lightweight user profile in a local JSON file:
-
-memory/user_profile.json
-
-yaml
-Copy code
-
-This file is:
-- Created automatically on first run
-- Updated as you continue learning
-- Loaded on every new session
-
-No database required — perfect for beginners.
+* What “memory” means in an AI agent (not just chat history)
+* How to store and load memory locally using a JSON file
+* How to personalize responses using saved context
+* How to safely manage API keys using `.env`
+* How to run a multi-project repo using `uv`
 
 ---
 
-## 📁 Project Structure
+## 🛠 Tech Stack
 
+* Python
+* LangChain
+* OpenAI API
+* `rich` (better CLI output)
+* `uv` (dependency management)
+
+---
+
+## 📂 Project Structure
+
+```
 project-02-study-buddy/
-├─ main.py # Study Buddy logic
-├─ README.md # This file
+├─ main.py
+├─ README.md
 ├─ pyproject.toml
 ├─ uv.lock
-├─ memory/ # Persistent memory (auto-generated)
-│ └─ user_profile.json
-├─ .env.example # Environment variable template
-
-yaml
-Copy code
-
-> ⚠️ `.env` is intentionally NOT committed.
+├─ .env.example
+├─ memory/
+│  └─ user_profile.json
+```
 
 ---
 
 ## 🚀 Getting Started
 
-### 1️⃣ Set up your environment
+### 1️⃣ Install dependencies
 
-From the project folder:
+From the **repository root**:
 
 ```bash
 uv sync
-(or install dependencies manually if not using uv)
+```
 
-2️⃣ Add your OpenAI API key
-Create a .env file in this folder:
+---
 
-env
-Copy code
-OPENAI_API_KEY=your_openai_api_key_here
-⚠️ Never commit your .env file — it is ignored by Git.
+### 2️⃣ Set up environment variables
 
-3️⃣ Run the Study Buddy
-bash
-Copy code
+Inside the `project-02-study-buddy` folder:
+
+1. Copy the example file:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Open `.env` and add your OpenAI API key:
+
+   ```
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
+
+⚠️ Never commit `.env` — it is ignored by Git.
+
+---
+
+### 3️⃣ Run the Study Buddy
+
+From inside `project-02-study-buddy`:
+
+```bash
 python main.py
-On first run, you’ll be guided through a short onboarding to personalize your Study Buddy.
+```
 
-💬 Example Interaction
-sql
-Copy code
-🐣 First-time setup: Let’s personalize your Study Buddy
+On first run, it will ask a few questions and save your profile to:
 
-Your name: Genesis
-What are you learning right now?: Python
-Experience level?: beginner
-Later sessions will automatically remember this context.
+`project-02-study-buddy/memory/user_profile.json`
 
-🔐 Security Notes
-API keys are stored locally in .env
+Next time you run it, it will remember you automatically.
 
-.env.example is provided for reference
+---
 
-No secrets are pushed to GitHub
+## 💬 Example Prompts
 
-🧩 What You Learn From This Project
-How to add persistent memory to an AI agent
+Try asking:
 
-How to structure multi-project repositories
+* `Explain Python functions like I’m a beginner`
+* `Quiz me on what I learned yesterday`
+* `Give me a 20-minute study plan for today`
+* `Explain this concept with a real-life analogy`
 
-Safe handling of environment variables
+---
 
-Building AI tools that adapt to the user
+## 📌 Key Takeaways
 
-🔜 What’s Next
-This project is part of the Beginner AI Projects series.
+* “Memory” can be simple: **a local file + saved context**
+* A personalized agent feels smarter even with the same model
+* You still don’t need a UI to build something useful
+* Small steps = real progress
 
-Next projects will explore:
+---
 
-Smarter memory strategies
+Built by **Genesis**
+Beginner AI Projects Series ✨
 
-Progress tracking
-
-AI agents with goals and planning
-
-Turning agents into apps
-
-Built by Genesis
-Part of the Beginner AI Projects series 💚
+---
