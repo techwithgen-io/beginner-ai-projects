@@ -12,3 +12,11 @@ __pycache__/
 
 # OS
 .DS_Store
+
+# Streamlit local data
+memory/
+**/memory/
+
+# Streamlit / editor misc
+.streamlit/
+.vscode/
